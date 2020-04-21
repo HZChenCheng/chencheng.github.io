@@ -1,0 +1,1584 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="RAC+MVVM在实际项目中用法, Coder">
+    <meta name="description" content="爱生活,爱代码">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>RAC+MVVM在实际项目中用法 | Coder</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">Coder</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Coder</div>
+        <div class="logo-desc">
+            
+            爱生活,爱代码
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/blinkfox/hexo-theme-matery" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/blinkfox/hexo-theme-matery" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/11.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">RAC+MVVM在实际项目中用法</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        height: calc(100vh - 250px);
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/iOS/">
+                                <span class="chip bg-color">iOS</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2018-03-20
+                </div>
+                
+
+                
+
+                
+
+                
+
+                
+            </div>
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <blockquote>
+<p>引言</p>
+</blockquote>
+<p>​    可以把信号想象成水龙头，只不过里面不是水，而是玻璃球(value)，直径跟水管的内径一样，这样就能保证玻璃球是依次排列，不会出现并排的情况(数据都是线性处理的，不会出现并发情况)。水龙头的开关默认是关的，除非有了接收方(subscriber)，才会打开。这样只要有新的玻璃球进来，就会自动传送给接收方。可以在水龙头上加一个过滤嘴(filter)，不符合的不让通过，也可以加一个改动装置，把球改变成符合自己的需求(map)。也可以把多个水龙头合并成一个新的水龙头(combineLatest:reduce:)，这样只要其中的一个水龙头有玻璃球出来，这个新合并的水龙头就会得到这个球。(引用 <a href="http://limboy.me/ios/2013/06/19/frp-reactivecocoa.html" target="_blank" rel="noopener">大神leezhong在博客中提到的比喻</a>)</p>
+<a id="more"></a>
+
+<p><img src="http://cc.cocimg.com/api/uploads//20171227/1514340524818037.png" alt="iOSç®åä½¿ç¨RAC"></p>
+<h4 id="RAC在iOS的实际开发中确实是一件有力的武器，此文将从以下几方面讲解"><a href="#RAC在iOS的实际开发中确实是一件有力的武器，此文将从以下几方面讲解" class="headerlink" title="RAC在iOS的实际开发中确实是一件有力的武器，此文将从以下几方面讲解"></a>RAC在iOS的实际开发中确实是一件有力的武器，此文将从以下几方面讲解</h4><ul>
+<li>RACSignal</li>
+<li>RACSubject</li>
+<li>RACSequence</li>
+<li>RACMulticastConnection</li>
+<li>RACCommand</li>
+<li>RAC常用宏</li>
+<li>RAC-bind</li>
+<li>RAC-过滤</li>
+<li>RAC-映射</li>
+<li>RAC-组合</li>
+<li>RAC+MVVM-网络请求</li>
+</ul>
+<h4 id="RACSignal"><a href="#RACSignal" class="headerlink" title="RACSignal"></a>RACSignal</h4><pre><code class="objective-c">// 1.创建信号
+RACSignal *signal = [RACSignal createSignal:^RACDisposable *(id&lt;RACSubscriber&gt; subscriber) {
+// 3.发送信号
+[subscriber sendNext:@&quot;ws&quot;];
+// 4.取消信号，如果信号想要被取消，就必须返回一个RACDisposable
+// 信号什么时候被取消：1.自动取消，当一个信号的订阅者被销毁的时候机会自动取消订阅，2.手动取消，
+//block什么时候调用：一旦一个信号被取消订阅就会调用
+//block作用：当信号被取消时用于清空一些资源
+    return [RACDisposable disposableWithBlock:^{
+        NSLog(@&quot;取消订阅&quot;);
+    }];
+}];
+// 2. 订阅信号
+//subscribeNext
+// 把nextBlock保存到订阅者里面
+// 只要订阅信号就会返回一个取消订阅信号的类
+RACDisposable *disposable = [signal subscribeNext:^(id x) {
+// block的调用时刻：只要信号内部发出数据就会调用这个block
+    NSLog(@&quot;======%@&quot;, x);
+}];
+// 取消订阅
+[disposable dispose];
+</code></pre>
+<p><strong>总结</strong></p>
+<ul>
+<li>核心：</li>
+<li>核心：信号类</li>
+<li>信号类的作用：只要有数据改变就会把数据包装成信号传递出去</li>
+<li>只要有数据改变就会有信号发出</li>
+<li>数据发出，并不是信号类发出，信号类不能发送数据</li>
+<li>使用方法：</li>
+<li>创建信号</li>
+<li>订阅信号</li>
+<li>实现思路：</li>
+<li>当一个信号被订阅，创建订阅者，并把nextBlock保存到订阅者里面。</li>
+<li>创建的时候会返回 [RACDynamicSignal createSignal:didSubscribe];</li>
+<li>调用RACDynamicSignal的didSubscribe</li>
+<li>发送信号[subscriber sendNext:value];</li>
+<li>拿到订阅者的nextBlock调用</li>
+</ul>
+<h4 id="RACSubject"><a href="#RACSubject" class="headerlink" title="RACSubject"></a>RACSubject</h4><p>RACSubject 在使用中我们可以完全代替代理，代码简介方法。</p>
+<p><strong>总结</strong></p>
+<p>我们完全可以用RACSubject代替代理/通知，确实方便许多<br>这里我们点击TwoViewController的pop的时候 将字符串”ws”传给了ViewController的button的title。</p>
+<p>步骤：</p>
+<p>1.创建信号</p>
+<pre><code class="objc">RACSubject *subject = [RACSubject subject];</code></pre>
+<p>2.订阅信号</p>
+<pre><code class="objc">[subject subscribeNext:^(id x) {
+    // block:当有数据发出的时候就会调用
+    // block:处理数据
+    NSLog(@&quot;%@&quot;,x);
+}];</code></pre>
+<p>3.发送信号</p>
+<pre><code class="objc">[subject sendNext:value];</code></pre>
+<p>注意<br>RACSubject和RACReplaySubject的区别<br>RACSubject必须要先订阅信号之后才能发送信号， 而RACReplaySubject可以先发送信号后订阅.<br>RACSubject 代码中体现为：先走TwoViewController的sendNext，后走ViewController的subscribeNext订阅<br>RACReplaySubject 代码中体现为：先走ViewController的subscribeNext订阅，后走TwoViewController的sendNext<br>可按实际情况各取所需。</p>
+<h4 id="RACSequence"><a href="#RACSequence" class="headerlink" title="RACSequence"></a>RACSequence</h4><p>使用场景—： 可以快速高效的遍历数组和字典。</p>
+<pre><code class="objc">NSString *path = [[NSBundle mainBundle] pathForResource:@&quot;flags.plist&quot; ofType:nil];
+NSArray *dictArr = [NSArray arrayWithContentsOfFile:path];
+[dictArr.rac_sequence.signal subscribeNext:^(id x) {
+    NSLog(@&quot;%@&quot;, x);
+} error:^(NSError *error) {
+    NSLog(@&quot;===error===&quot;);
+} completed:^{
+    NSLog(@&quot;ok---完毕&quot;);
+}];
+
+也可以使用宏
+
+NSDictionary *dict = @{@&quot;key&quot;:@1, @&quot;key2&quot;:@2};
+[dict.rac_sequence.signal subscribeNext:^(id x) {
+NSLog(@&quot;%@&quot;, x);
+NSString *key = x[0];
+NSString *value = x[1];
+// RACTupleUnpack宏：专门用来解析元组
+// RACTupleUnpack 等会右边：需要解析的元组 宏的参数，填解析的什么样数据
+// 元组里面有几个值，宏的参数就必须填几个
+RACTupleUnpack(NSString *key, NSString *value) = x;
+    NSLog(@&quot;%@ %@&quot;, key, value);
+} error:^(NSError *error) {
+    NSLog(@&quot;===error&quot;);
+} completed:^{
+    NSLog(@&quot;-----ok---完毕&quot;);
+}];
+</code></pre>
+<h4 id="RACMulticastConnection"><a href="#RACMulticastConnection" class="headerlink" title="RACMulticastConnection"></a>RACMulticastConnection</h4><p>当有多个订阅者，但是我们只想发送一个信号的时候怎么办？这时我们就可以用RACMulticastConnection，来实现。代码示例如下</p>
+<pre><code class="objc">// 普通写法, 这样的缺点是：没订阅一次信号就得重新创建并发送请求，这样很不友好
+RACSignal *signal = [RACSignal createSignal:^RACDisposable *(id&lt;RACSubscriber&gt; subscriber) {
+    // didSubscribeblock中的代码都统称为副作用。
+    // 发送请求---比如afn
+    NSLog(@&quot;发送请求啦&quot;);
+    // 发送信号
+  [subscriber sendNext:@&quot;ws&quot;];
+      return nil;
+  }];
+  [signal subscribeNext:^(id x) {
+      NSLog(@&quot;%@&quot;, x);
+  }];
+  [signal subscribeNext:^(id x) {
+      NSLog(@&quot;%@&quot;, x);
+  }];
+  [signal subscribeNext:^(id x) {
+      NSLog(@&quot;%@&quot;, x);
+  }];
+}</code></pre>
+<pre><code class="objc">// 比较好的做法。 使用RACMulticastConnection，无论有多少个订阅者，无论订阅多少次，我只发送一个。
+// 1.发送请求，用一个信号内包装，不管有多少个订阅者，只想发一次请求
+RACSignal *signal = [RACSignal createSignal:^RACDisposable *(id&lt;RACSubscriber&gt; subscriber) {
+    // 发送请求
+    NSLog(@&quot;发送请求啦&quot;);
+    // 发送信号
+    [subscriber sendNext:@&quot;ws&quot;];
+return nil;
+}];
+//2. 创建连接类
+RACMulticastConnection *connection = [signal publish];
+[connection.signal subscribeNext:^(id x) {
+    NSLog(@&quot;%@&quot;, x);
+}];
+[connection.signal subscribeNext:^(id x) {
+    NSLog(@&quot;%@&quot;, x);
+}];
+[connection.signal subscribeNext:^(id x) {
+    NSLog(@&quot;%@&quot;, x);
+}];
+//3. 连接。只有连接了才会把信号源变为热信号
+[connection connect];</code></pre>
+<h4 id="RACCommand"><a href="#RACCommand" class="headerlink" title="RACCommand"></a>RACCommand</h4><ul>
+<li>RACCommand:RAC中用于处理事件的类，可以把事件如何处理，事件中的数据如何传递，包装到这个类中，他可以很方便的监控事件的执行过程，比如看事件有没有执行完毕</li>
+<li>使用场景：监听按钮点击，网络请求</li>
+</ul>
+<pre><code class="objc">// 普通做法
+// RACCommand: 处理事件
+// 不能返回空的信号
+// 1.创建命令
+RACCommand *command = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
+  //block调用，执行命令的时候就会调用
+  NSLog(@&quot;%@&quot;,input); // input 为执行命令传进来的参数
+  // 这里的返回值不允许为nil
+  return [RACSignal createSignal:^RACDisposable *(id&lt;RACSubscriber&gt; subscriber) {
+  [subscriber sendNext:@&quot;执行命令产生的数据&quot;];
+      return nil;
+  }];
+}];
+
+// 如何拿到执行命令中产生的数据呢？
+// 订阅命令内部的信号
+// ** 方式一：直接订阅执行命令返回的信号
+
+// 2.执行命令
+RACSignal *signal =[command execute:@2]; // 这里其实用到的是replaySubject 可以先发送命令再订阅
+// 在这里就可以订阅信号了
+[signal subscribeNext:^(id x) {
+    NSLog(@&quot;%@&quot;,x);
+}];
+</code></pre>
+<pre><code class="objc">// 一般做法
+// 1.创建命令
+RACCommand *command = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
+  //block调用，执行命令的时候就会调用
+  NSLog(@&quot;%@&quot;,input); // input 为执行命令传进来的参数
+  // 这里的返回值不允许为nil
+  return [RACSignal createSignal:^RACDisposable *(id&lt;RACSubscriber&gt; subscriber) {
+      [subscriber sendNext:@&quot;执行命令产生的数据&quot;];
+    return nil;
+  }];
+}];
+
+// 方式二：
+// 订阅信号
+// 注意：这里必须是先订阅才能发送命令
+// executionSignals：信号源，信号中信号，signalofsignals:信号，发送数据就是信号
+[command.executionSignals subscribeNext:^(RACSignal *x) {
+  [x subscribeNext:^(id x) {
+      NSLog(@&quot;%@&quot;, x);
+  }];
+//        NSLog(@&quot;%@&quot;, x);
+}];
+
+// 2.执行命令
+[command execute:@2];
+</code></pre>
+<pre><code class="objc">// 高级做法
+// 1.创建命令
+RACCommand *command = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
+// block调用：执行命令的时候就会调用
+NSLog(@&quot;%@&quot;, input);
+// 这里的返回值不允许为nil
+return [RACSignal createSignal:^RACDisposable *(id&lt;RACSubscriber&gt; subscriber) {
+[subscriber sendNext:@&quot;发送信号&quot;];
+return nil;
+}];
+}];
+
+// 方式三
+// switchToLatest获取最新发送的信号，只能用于信号中信号。
+[command.executionSignals.switchToLatest subscribeNext:^(id x) {
+NSLog(@&quot;%@&quot;, x);
+}];
+// 2.执行命令
+[command execute:@3];</code></pre>
+<pre><code class="objc">// switchToLatest--用于信号中信号
+// 创建信号中信号
+RACSubject *signalofsignals = [RACSubject subject];
+RACSubject *signalA = [RACSubject subject];
+// 订阅信号
+//    [signalofsignals subscribeNext:^(RACSignal *x) {
+//        [x subscribeNext:^(id x) {
+//            NSLog(@&quot;%@&quot;, x);
+//        }];
+//    }];
+// switchToLatest: 获取信号中信号发送的最新信号
+[signalofsignals.switchToLatest subscribeNext:^(id x) {
+NSLog(@&quot;%@&quot;, x);
+}];
+// 发送信号
+[signalofsignals sendNext:signalA];
+[signalA sendNext:@4];
+</code></pre>
+<pre><code class="objc">// 监听事件有没有完成
+//注意：当前命令内部发送数据完成，一定要主动发送完成
+// 1.创建命令
+RACCommand *command = [[RACCommand alloc] initWithSignalBlock:^RACSignal *(id input) {
+// block调用：执行命令的时候就会调用
+NSLog(@&quot;%@&quot;, input);
+// 这里的返回值不允许为nil
+return [RACSignal createSignal:^RACDisposable *(id&lt;RACSubscriber&gt; subscriber) {
+// 发送数据
+[subscriber sendNext:@&quot;执行命令产生的数据&quot;];
+
+// *** 发送完成 **
+[subscriber sendCompleted];
+return nil;
+}];
+}];
+// 监听事件有没有完成
+[command.executing subscribeNext:^(id x) {
+if ([x boolValue] == YES) { // 正在执行
+NSLog(@&quot;当前正在执行%@&quot;, x);
+}else {
+// 执行完成/没有执行
+NSLog(@&quot;执行完成/没有执行&quot;);
+}
+}];
+
+// 2.执行命令
+[command execute:@1];
+</code></pre>
+<h4 id="RAC常用宏"><a href="#RAC常用宏" class="headerlink" title="RAC常用宏"></a>RAC常用宏</h4><p>RAC有许多强大而方便的宏。如下</p>
+<pre><code class="objc">// RAC:把一个对象的某个属性绑定一个信号,只要发出信号,就会把信号的内容给对象的属性赋值
+// 给label的text属性绑定了文本框改变的信号
+RAC(self.label, text) = self.textField.rac_textSignal;
+//    [self.textField.rac_textSignal subscribeNext:^(id x) {
+//        self.label.text = x;
+//    }];
+</code></pre>
+<pre><code class="objc">/**
+*  KVO
+*  RACObserveL:快速的监听某个对象的某个属性改变
+*  返回的是一个信号,对象的某个属性改变的信号
+*/
+[RACObserve(self.view, center) subscribeNext:^(id x) {
+NSLog(@&quot;%@&quot;, x);
+}];
+</code></pre>
+<pre><code class="objc">//例 textField输入的值赋值给label，监听label文字改变,
+RAC(self.label, text) = self.textField.rac_textSignal;
+[RACObserve(self.label, text) subscribeNext:^(id x) {
+NSLog(@&quot;====label的文字变了&quot;);
+}];
+</code></pre>
+<pre><code class="objc">/**
+*  循环引用问题
+*/
+@weakify(self)
+RACSignal *signal = [RACSignal createSignal:^RACDisposable *(id&lt;RACSubscriber&gt; subscriber) {
+@strongify(self)
+NSLog(@&quot;%@&quot;,self.view);
+return nil;
+}];
+_signal = signal;
+使用 @weakify(self)和@strongify(self)来避免循环引用
+</code></pre>
+<pre><code class="objc">/**
+* 元祖
+* 快速包装一个元组
+* 把包装的类型放在宏的参数里面,就会自动包装
+*/
+RACTuple *tuple = RACTuplePack(@1,@2,@4);
+// 宏的参数类型要和元祖中元素类型一致， 右边为要解析的元祖。
+RACTupleUnpack_(NSNumber *num1, NSNumber *num2, NSNumber * num3) = tuple;// 4.元祖
+// 快速包装一个元组
+// 把包装的类型放在宏的参数里面,就会自动包装
+NSLog(@&quot;%@ %@ %@&quot;, num1, num2, num3);
+</code></pre>
+<h4 id="RAC-bind"><a href="#RAC-bind" class="headerlink" title="RAC-bind"></a>RAC-bind</h4><pre><code class="objc">// 1.创建信号
+RACSubject *subject = [RACSubject subject];
+// 2.绑定信号
+RACSignal *bindSignal = [subject bind:^RACStreamBindBlock{
+// block调用时刻：只要绑定信号订阅就会调用。不做什么事情，
+return ^RACSignal *(id value, BOOL *stop){
+// 一般在这个block中做事 ，发数据的时候会来到这个block。
+// 只要源信号（subject）发送数据，就会调用block
+// block作用：处理源信号内容
+// value:源信号发送的内容，
+value = @3; // 如果在这里把value的值改了，那么订阅绑定信号的值即44行的x就变了
+NSLog(@&quot;接受到源信号的内容：%@&quot;, value);
+//返回信号，不能为nil,如果非要返回空---则empty或 alloc init。
+return [RACReturnSignal return:value]; // 把返回的值包装成信号
+};
+}];
+
+// 3.订阅绑定信号
+[bindSignal subscribeNext:^(id x) {
+
+NSLog(@&quot;接收到绑定信号处理完的信号:%@&quot;, x);
+}];
+// 4.发送信号
+[subject sendNext:@&quot;123&quot;];
+</code></pre>
+<ul>
+<li>总结</li>
+<li>bind（绑定）的使用思想和Hook的一样—&gt; 都是拦截API从而可以对数据进行操作，，而影响返回数据。</li>
+<li>发送信号的时候会来到30行的block。在这个block里我们可以对数据进行一些操作，那么35行打印的value和订阅绑定信号后的value就会变了。变成什么样随你喜欢喽。</li>
+</ul>
+<h4 id="RAC-过滤"><a href="#RAC-过滤" class="headerlink" title="RAC-过滤"></a>RAC-过滤</h4><ul>
+<li>有时候我们想要过滤一些信号，这时候我们便可以用RAC的过滤方法。过滤方法有好多种，如下代码，从不同情况下进行了分析。</li>
+</ul>
+<pre><code class="objc">// 跳跃 ： 如下，skip传入2 跳过前面两个值
+// 实际用处： 在实际开发中比如 后台返回的数据前面几个没用，我们想跳跃过去，便可以用skip
+RACSubject *subject = [RACSubject subject];
+[[subject skip:2] subscribeNext:^(id x) {
+NSLog(@&quot;%@&quot;, x);
+}];
+[subject sendNext:@1];
+[subject sendNext:@2];
+[subject sendNext:@3];
+</code></pre>
+<pre><code class="objc">//distinctUntilChanged:-- 如果当前的值跟上一次的值一样，就不会被订阅到
+RACSubject *subject = [RACSubject subject];
+[[subject distinctUntilChanged] subscribeNext:^(id x) {
+NSLog(@&quot;%@&quot;, x);
+}];
+// 发送信号
+[subject sendNext:@1];
+[subject sendNext:@2];
+[subject sendNext:@2]; // 不会被订阅
+</code></pre>
+<pre><code class="objc">// take:可以屏蔽一些值,去掉前面几个值---这里take为2 则只拿到前两个值
+RACSubject *subject = [RACSubject subject];
+[[subject take:2] subscribeNext:^(id x) {
+NSLog(@&quot;%@&quot;, x);
+}];
+// 发送信号
+[subject sendNext:@1];
+[subject sendNext:@2];
+[subject sendNext:@3];
+</code></pre>
+<pre><code class="objc">//takeLast:和take的用法一样，不过他取的是最后的几个值，如下，则取的是最后两个值
+//注意点:takeLast 一定要调用sendCompleted，告诉他发送完成了，这样才能取到最后的几个值
+RACSubject *subject = [RACSubject subject];
+[[subject takeLast:2] subscribeNext:^(id x) {
+NSLog(@&quot;%@&quot;, x);
+}];
+// 发送信号
+[subject sendNext:@1];
+[subject sendNext:@2];
+[subject sendNext:@3];
+[subject sendCompleted];
+</code></pre>
+<pre><code class="objc">// takeUntil:---给takeUntil传的是哪个信号，那么当这个信号发送信号或sendCompleted，就不能再接受源信号的内容了。
+RACSubject *subject = [RACSubject subject];
+RACSubject *subject2 = [RACSubject subject];
+[[subject takeUntil:subject2] subscribeNext:^(id x) {
+NSLog(@&quot;%@&quot;, x);
+}];
+// 发送信号
+[subject sendNext:@1];
+[subject sendNext:@2];
+[subject2 sendNext:@3];  // 1
+//    [subject2 sendCompleted]; // 或2
+[subject sendNext:@4];
+</code></pre>
+<pre><code class="objc">// ignore: 忽略掉一些值
+//ignore:忽略一些值
+//ignoreValues:表示忽略所有的值
+// 1.创建信号
+RACSubject *subject = [RACSubject subject];
+// 2.忽略一些值
+RACSignal *ignoreSignal = [subject ignore:@2]; // ignoreValues:表示忽略所有的值
+// 3.订阅信号
+[ignoreSignal subscribeNext:^(id x) {
+NSLog(@&quot;%@&quot;, x);
+}];
+// 4.发送数据
+[subject sendNext:@2];
+</code></pre>
+<pre><code class="objc">// 一般和文本框一起用，添加过滤条件
+// 只有当文本框的内容长度大于5，才获取文本框里的内容
+[[self.textField.rac_textSignal filter:^BOOL(id value) {
+// value 源信号的内容
+return [value length] &gt; 5;
+// 返回值 就是过滤条件。只有满足这个条件才能获取到内容
+}] subscribeNext:^(id x) {
+NSLog(@&quot;%@&quot;, x);
+}];
+</code></pre>
+<h4 id="RAC-映射"><a href="#RAC-映射" class="headerlink" title="RAC-映射"></a>RAC-映射</h4><ul>
+<li>RAC的映射在实际开发中有什么用呢？比如我们想要拦截服务器返回的数据，给数据拼接特定的东西或想对数据进行操作从而更改返回值，类似于这样的情况下，我们便可以考虑用RAC的映射，实例代码如下</li>
+</ul>
+<pre><code class="objc">- (void)map {
+// 创建信号
+RACSubject *subject = [RACSubject subject];
+// 绑定信号
+RACSignal *bindSignal = [subject map:^id(id value) {
+
+// 返回的类型就是你需要映射的值
+return [NSString stringWithFormat:@&quot;ws:%@&quot;, value]; //这里将源信号发送的“123” 前面拼接了ws：
+}];
+// 订阅绑定信号
+[bindSignal subscribeNext:^(id x) {
+NSLog(@&quot;%@&quot;, x);
+}];
+// 发送信号
+[subject sendNext:@&quot;123&quot;];
+</code></pre>
+<pre><code class="objc">- (void)flatMap {
+// 创建信号
+RACSubject *subject = [RACSubject subject];
+// 绑定信号
+RACSignal *bindSignal = [subject flattenMap:^RACStream *(id value) {
+// block：只要源信号发送内容就会调用
+// value: 就是源信号发送的内容
+// 返回信号用来包装成修改内容的值
+return [RACReturnSignal return:value];
+
+}];
+
+// flattenMap中返回的是什么信号，订阅的就是什么信号(那么，x的值等于value的值，如果我们操纵value的值那么x也会随之而变)
+// 订阅信号
+[bindSignal subscribeNext:^(id x) {
+NSLog(@&quot;%@&quot;, x);
+}];
+
+// 发送数据
+[subject sendNext:@&quot;123&quot;];
+
+}
+</code></pre>
+<pre><code class="objc">- (void)flattenMap2 {
+// flattenMap 主要用于信号中的信号
+// 创建信号
+RACSubject *signalofSignals = [RACSubject subject];
+RACSubject *signal = [RACSubject subject];
+
+// 订阅信号
+//方式1
+//    [signalofSignals subscribeNext:^(id x) {
+//
+//        [x subscribeNext:^(id x) {
+//            NSLog(@&quot;%@&quot;, x);
+//        }];
+//    }];
+// 方式2
+//    [signalofSignals.switchToLatest  ];
+// 方式3
+//   RACSignal *bignSignal = [signalofSignals flattenMap:^RACStream *(id value) {
+//
+//        //value:就是源信号发送内容
+//        return value;
+//    }];
+//    [bignSignal subscribeNext:^(id x) {
+//        NSLog(@&quot;%@&quot;, x);
+//    }];
+// 方式4--------也是开发中常用的
+[[signalofSignals flattenMap:^RACStream *(id value) {
+return value;
+}] subscribeNext:^(id x) {
+NSLog(@&quot;%@&quot;, x);
+}];
+
+// 发送信号
+[signalofSignals sendNext:signal];
+[signal sendNext:@&quot;123&quot;];
+}
+</code></pre>
+<h4 id="RAC-组合"><a href="#RAC-组合" class="headerlink" title="RAC-组合"></a>RAC-组合</h4><ul>
+<li>把多个信号聚合成你想要的信号,使用场景—-：比如-当多个输入框都有值的时候按钮才可点击。</li>
+</ul>
+<pre><code class="objc">// 思路--- 就是把输入框输入值的信号都聚合成按钮是否能点击的信号。
+- (void)combineLatest {
+
+RACSignal *combinSignal = [RACSignal combineLatest:@[self.accountField.rac_textSignal, self.pwdField.rac_textSignal] reduce:^id(NSString *account, NSString *pwd){ //reduce里的参数一定要和combineLatest数组里的一一对应。
+// block: 只要源信号发送内容，就会调用，组合成一个新值。
+NSLog(@&quot;%@ %@&quot;, account, pwd);
+return @(account.length &amp;&amp; pwd.length);
+}];
+
+//    // 订阅信号
+//    [combinSignal subscribeNext:^(id x) {
+//        self.loginBtn.enabled = [x boolValue];
+//    }];    // ----这样写有些麻烦，可以直接用RAC宏
+RAC(self.loginBtn, enabled) = combinSignal;
+}
+</code></pre>
+<pre><code class="objc">- (void)zipWith {
+//zipWith:把两个信号压缩成一个信号，只有当两个信号同时发出信号内容时，并且把两个信号的内容合并成一个元祖，才会触发压缩流的next事件。
+// 创建信号A
+RACSubject *signalA = [RACSubject subject];
+// 创建信号B
+RACSubject *signalB = [RACSubject subject];
+// 压缩成一个信号
+// **-zipWith-**: 当一个界面多个请求的时候，要等所有请求完成才更新UI
+// 等所有信号都发送内容的时候才会调用
+RACSignal *zipSignal = [signalA zipWith:signalB];
+[zipSignal subscribeNext:^(id x) {
+NSLog(@&quot;%@&quot;, x); //所有的值都被包装成了元组
+}];
+
+// 发送信号 交互顺序，元组内元素的顺序不会变，跟发送的顺序无关，而是跟压缩的顺序有关[signalA zipWith:signalB]---先是A后是B
+[signalA sendNext:@1];
+[signalB sendNext:@2];
+
+}
+</code></pre>
+<pre><code class="objc">// 任何一个信号请求完成都会被订阅到
+// merge:多个信号合并成一个信号，任何一个信号有新值就会调用
+- (void)merge {
+// 创建信号A
+RACSubject *signalA = [RACSubject subject];
+// 创建信号B
+RACSubject *signalB = [RACSubject subject];
+//组合信号
+RACSignal *mergeSignal = [signalA merge:signalB];
+// 订阅信号
+[mergeSignal subscribeNext:^(id x) {
+NSLog(@&quot;%@&quot;, x);
+}];
+// 发送信号---交换位置则数据结果顺序也会交换
+[signalB sendNext:@&quot;下部分&quot;];
+[signalA sendNext:@&quot;上部分&quot;];
+}
+</code></pre>
+<pre><code class="objc">// then --- 使用需求：有两部分数据：想让上部分先进行网络请求但是过滤掉数据，然后进行下部分的，拿到下部分数据
+- (void)then {
+// 创建信号A
+RACSignal *signalA = [RACSignal createSignal:^RACDisposable *(id&lt;RACSubscriber&gt; subscriber) {
+// 发送请求
+NSLog(@&quot;----发送上部分请求---afn&quot;);
+
+[subscriber sendNext:@&quot;上部分数据&quot;];
+[subscriber sendCompleted]; // 必须要调用sendCompleted方法！
+return nil;
+}];
+
+// 创建信号B，
+RACSignal *signalsB = [RACSignal createSignal:^RACDisposable *(id&lt;RACSubscriber&gt; subscriber) {
+// 发送请求
+NSLog(@&quot;--发送下部分请求--afn&quot;);
+[subscriber sendNext:@&quot;下部分数据&quot;];
+return nil;
+}];
+// 创建组合信号
+// then;忽略掉第一个信号的所有值
+RACSignal *thenSignal = [signalA then:^RACSignal *{
+// 返回的信号就是要组合的信号
+return signalsB;
+}];
+
+// 订阅信号
+[thenSignal subscribeNext:^(id x) {
+NSLog(@&quot;%@&quot;, x);
+}];
+
+}
+</code></pre>
+<pre><code class="objc">// concat----- 使用需求：有两部分数据：想让上部分先执行，完了之后再让下部分执行（都可获取值）
+- (void)concat {
+// 组合
+
+// 创建信号A
+RACSignal *signalA = [RACSignal createSignal:^RACDisposable *(id&lt;RACSubscriber&gt; subscriber) {
+// 发送请求
+//        NSLog(@&quot;----发送上部分请求---afn&quot;);
+
+[subscriber sendNext:@&quot;上部分数据&quot;];
+[subscriber sendCompleted]; // 必须要调用sendCompleted方法！
+return nil;
+}];
+
+// 创建信号B，
+RACSignal *signalsB = [RACSignal createSignal:^RACDisposable *(id&lt;RACSubscriber&gt; subscriber) {
+// 发送请求
+//        NSLog(@&quot;--发送下部分请求--afn&quot;);
+[subscriber sendNext:@&quot;下部分数据&quot;];
+return nil;
+}];
+
+
+// concat:按顺序去链接
+//**-注意-**：concat，第一个信号必须要调用sendCompleted
+// 创建组合信号
+RACSignal *concatSignal = [signalA concat:signalsB];
+// 订阅组合信号
+[concatSignal subscribeNext:^(id x) {
+NSLog(@&quot;%@&quot;,x);
+}];
+
+}
+</code></pre>
+
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">ChenCheng</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="http://chencheng.tech/2018/03/20/RAC%E7%9A%84%E4%BD%BF%E7%94%A8/">http://chencheng.tech/2018/03/20/RAC%E7%9A%84%E4%BD%BF%E7%94%A8/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">ChenCheng</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/iOS/">
+                                    <span class="chip bg-color">iOS</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2018/06/23/iOS%E6%8A%80%E5%B7%A7/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="iOS 开发技巧">
+                        
+                        <span class="card-title">iOS 开发技巧</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+引言
+
+iOS 开发技巧
+
+
+
+判断当前ViewController是push还是present的方式显示的
+
+NSArray *viewcontrollers=self.navigationController.viewControll
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2018-06-23
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            ChenCheng
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/iOS/">
+                        <span class="chip bg-color">iOS</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2017/12/13/%E9%98%9F%E5%88%97%E7%BB%84%E7%94%A8%E4%BA%8E%E5%A4%9A%E4%B8%AA%E7%BD%91%E7%BB%9C%E8%AF%B7%E6%B1%82/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="队列组用于多个网络请求">
+                        
+                        <span class="card-title">队列组用于多个网络请求</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+引言
+
+队列组用于多个网络请求
+
+
+dispatch_group_t group = dispatch_group_create();
+ dispatch_queue_t serialQueue = dispatch_queue_crea
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2017-12-13
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E7%BD%91%E7%BB%9C/" class="post-category">
+                                    网络
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/iOS/">
+                        <span class="chip bg-color">iOS</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+<!-- 代码块折行 -->
+
+<style type="text/css">
+code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }
+</style>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+    <div class="container row center-align" style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            <span id="year">2019</span>
+            <a href="/about" target="_blank">ChenCheng</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/HZChenCheng" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:492321358@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=492321358" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 492321358" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/search.xml", 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>
